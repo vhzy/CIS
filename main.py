@@ -13,6 +13,7 @@ if __name__ == '__main__':
 
     # region register processor yapf: disable
     processors = dict()
+    
     # processors['demo-stgcn'] = import_class('processor.demo-stgcn.DemoOffline')
 
     # processors['show-info'] = import_class('processor.show-info.ShowInfo')
