@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import pickle
+#此代码已废弃，相同功能代码见filter_image_label_process
 #You nead downloading DISFA including 'ActionUnit_Labels'
 label_path = '/home/hfutzny/sda/casual_face/dataset/ActionUnit_Labels'
 list_path_prefix = '/home/hfutzny/sda/casual_face/CIS/data/DISFA/list/'

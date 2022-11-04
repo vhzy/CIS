@@ -1,14 +1,24 @@
+#生成输入的label和image1路径pkl文件
 import os
 import numpy as np
 import pickle
+import random
 #You nead downloading DISFA including 'ActionUnit_Labels'
 label_path = '/home/hfutzny/sda/casual_face/dataset/ActionUnit_Labels'
-list_path_prefix = '/home/hfutzny/sda/casual_face/CIS/data/DISFA/list/'
+list_path_prefix = '/home/hfutzny/sda/casual_face/CIS/data/DISFA/list_random/'
 image_path = '/home/hfutzny/sda/casual_face/CIS/data/DISFA/image/'
 
-part1 = ['SN002','SN010','SN001','SN026','SN027','SN032','SN030','SN009','SN016']
-part2 = ['SN013','SN018','SN011','SN028','SN012','SN006','SN031','SN021','SN024']
-part3 = ['SN003','SN029','SN023','SN025','SN008','SN005','SN007','SN017','SN004']
+all = ['SN002','SN010','SN001','SN026','SN027','SN032','SN030','SN009','SN016','SN013','SN018','SN011','SN028','SN012','SN006','SN031','SN021','SN024','SN003','SN029','SN023','SN025','SN008','SN005','SN007','SN017','SN004']
+random.shuffle(all)
+part1 = all[0:9]
+part2 = all[9:18]
+part3 = all[18:]
+print(part1)
+print(part2)
+print(part3)
+# part1 = ['SN002','SN010','SN001','SN026','SN027','SN032','SN030','SN009','SN016']
+# part2 = ['SN013','SN018','SN011','SN028','SN012','SN006','SN031','SN021','SN024']
+# part3 = ['SN003','SN029','SN023','SN025','SN008','SN005','SN007','SN017','SN004']
 
 # fold1:  train : part1+part2 test: part3
 # fold2:  train : part1+part3 test: part2
@@ -57,7 +67,7 @@ for fr in part1:
         AULabel_path = os.path.join(fr_path,fr+'_au'+str(au) +'.txt')
         if not os.path.isfile(AULabel_path):
             continue
-        print("--Checking AU:" + str(au) + " ...")
+        #print("--Checking AU:" + str(au) + " ...")
         t = 0
         with open(AULabel_path, 'r') as label:
             for lines in label.readlines():
@@ -128,7 +138,7 @@ for fr in part2:
         AULabel_path = os.path.join(fr_path,fr+'_au'+str(au) +'.txt')
         if not os.path.isfile(AULabel_path):
             continue
-        print("--Checking AU:" + str(au) + " ...")
+        #print("--Checking AU:" + str(au) + " ...")
         t = 0
         with open(AULabel_path, 'r') as label:
             for lines in label.readlines():
@@ -194,7 +204,7 @@ for fr in part3:
         AULabel_path = os.path.join(fr_path,fr+'_au'+str(au) +'.txt')
         if not os.path.isfile(AULabel_path):
             continue
-        print("--Checking AU:" + str(au) + " ...")
+        #print("--Checking AU:" + str(au) + " ...")
         t = 0
         with open(AULabel_path, 'r') as label:
             for lines in label.readlines():

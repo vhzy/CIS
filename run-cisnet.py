@@ -24,12 +24,12 @@ if __name__ == "__main__":
     parser.add_argument('-w',
                         '--work_dir',
                         type=str,
-                        default='./work_dir/train/disfa/exp2',
+                        default='./work_dir/train/disfa/exp3',
                         help='work dir name')
     parser.add_argument('-d',
                         '--data_dir',
                         type=str,
-                        default='/home/hfutzny/sda/casual_face/CIS/data/DISFA/list',
+                        default='/home/hfutzny/sda/casual_face/CIS/data/DISFA/list_random1',
                         help='data dir name')
     parser.add_argument('-k', '--kfold', type=int, default=3, help='kfold')
     parser.add_argument('--num_class',
