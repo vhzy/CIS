@@ -1,1 +1,1 @@
-python run-cisnet.py -c './config/exp3' -w './work_dir/train/disfa/exp3' -d '/home/hfutzny/sda/casual_face/CIS/data/DISFA/list_random1'
+CUDA_VISIBLE_DEVICES="0,1" python run-cisnet.py -c './config/exp4' -w './work_dir/train/disfa/exp4' -d '/home/hfutzny/sda/casual_face/CIS/data/DISFA/list_random1'

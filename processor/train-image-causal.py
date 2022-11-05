@@ -75,7 +75,7 @@ class REC_Processor(Processor):
         if self.arg.pretrain and self.arg.model_args['backbone'] in [
                 'resnet18'
         ]:
-            pretrained_dict = models.resnet18(pretrained=True).state_dict()
+            pretrained_dict = models.resnet18(weights='ResNet18_Weights.DEFAULT').state_dict()
             for k, v in pretrained_dict.items():
                 if "layer1" in k:
                     update_dict[k.replace("layer1", "encoder.4", 1)] = v
@@ -101,7 +101,7 @@ class REC_Processor(Processor):
         elif self.arg.pretrain and self.arg.model_args['backbone'] in [
                 'resnet34'
         ]:
-            pretrained_dict = models.resnet34(pretrained=True).state_dict()
+            pretrained_dict = models.resnet34(weights='ResNet34_Weights.DEFAULT').state_dict()
             for k, v in pretrained_dict.items():
                 if "layer1" in k:
                     update_dict[k.replace("layer1", "encoder.4", 1)] = v
@@ -127,7 +127,7 @@ class REC_Processor(Processor):
         elif self.arg.pretrain and self.arg.model_args['backbone'] in [
                 'resnet50'
         ]:
-            pretrained_dict = models.resnet50(pretrained=True).state_dict()
+            pretrained_dict = models.resnet50(weights='ResNet50_Weights.DEFAULT').state_dict()
             for k, v in pretrained_dict.items():
                 if "layer1" in k:
                     update_dict[k.replace("layer1", "encoder.4", 1)] = v

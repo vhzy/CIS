@@ -6,7 +6,7 @@ from ruamel import yaml
 from torch.autograd.grad_mode import F
 from au_lib.data_utils import compute_label_frequency
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,3'
+#os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,3'
 
 if __name__ == "__main__":
 
@@ -85,12 +85,12 @@ if __name__ == "__main__":
             'log_interval': 1000,
             'save_interval': 5,
             'device': [0],
-            'batch_size': 4,
-            'test_batch_size': 4,
+            'batch_size': 64,
+            'test_batch_size': 64,
             'base_lr': 0.001,
             'lr_decay': 0.3,
             'step': [],
-            'num_epoch': 15,
+            'num_epoch': 20,
             'debug': False,
             'num_worker': 0,
             'optimizer': 'SGD',
