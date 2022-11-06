@@ -14,7 +14,7 @@ def video2image(video_path):
         if img is None:
             break
         ids += 1
-        target_path = f'/home/hfutzny/sda/casual_face/CIS/data/DISFA/{prefix}'
+        target_path = f'/home/hfut1609/Disk_sda/hzy/faceAU/dataset/raw_images/{prefix}'
         os.makedirs(target_path,exist_ok=True)
         cv2.imwrite(os.path.join(target_path,str(ids)+'.jpg'),img)
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -23,7 +23,8 @@ def video2image(video_path):
     cap.release()
     cv2.destroyAllWindows()
  
-raw_path = '/home/hfutzny/sda/casual_face/dataset/Videos_LeftCamera'
+#raw_path = '/home/hfutzny/sda/casual_face/dataset/Videos_LeftCamera'
+raw_path = '/home/hfut1609/Disk_sda/hzy/faceAU/dataset/videos'
 dirs = glob.glob(os.path.join(raw_path, '*.avi'))
 # print(dirs)
 for dir in dirs:

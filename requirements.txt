@@ -23,6 +23,7 @@ tensorboardX==2.1
 thop
 timm
 torchstat
-torchvision
+#torchvision==0.13.0+cu102
 tqdm==4.51.0
 tzlocal
+#torch==1.12+cu102

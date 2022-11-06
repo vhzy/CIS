@@ -157,7 +157,7 @@ class Model(nn.Module):
         # subject related
         if self.subject:
             if self.pooling == False:
-                self.projector = nn.Linear(
+                self.projector = nn.Linear( #projector
                     self.output_channel * self.output_size * self.output_size,
                     self.d_in)
                 self.subject_attention = SubjectAttentionLayer(
@@ -204,11 +204,11 @@ class Model(nn.Module):
         N, T, C, H, W = image.shape
         x = image.view(-1, image.shape[2], image.shape[3], image.shape[4])
 
-        x = self.encoder(x)
+        x = self.encoder(x)#经过resnet50的输出
         if self.pooling == False:
             x = x.view(x.shape[0], -1)
         else:
-            x = self.avgpool(x)
+            x = self.avgpool(x)#池化
             x = x.view(x.shape[0], -1)
 
         if self.subject:

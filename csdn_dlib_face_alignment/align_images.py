@@ -9,7 +9,7 @@ import cv2
 from os.path import basename
 
 # LANDMARKS_MODEL_URL = 'http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2'
-LANDMARKS_MODEL_URL = '/home/hfutzny/sda/casual_face/CIS/tests/shape_predictor_68_face_landmarks.dat'
+LANDMARKS_MODEL_URL = '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/tests/shape_predictor_68_face_landmarks.dat'
 
 
 def unpack_bz2(src_path):
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     # landmarks_model_path = unpack_bz2(get_file('shape_predictor_68_face_landmarks.dat.bz2',
     #                                            LANDMARKS_MODEL_URL, cache_subdir='temp'))
 
-    landmarks_model_path = '/home/hfutzny/sda/casual_face/CIS/tests/shape_predictor_68_face_landmarks.dat'
+    landmarks_model_path = '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/tests/shape_predictor_68_face_landmarks.dat'
 
     # RAW_IMAGES_DIR = sys.argv[1]
     # ALIGNED_IMAGES_DIR = sys.argv[2]
@@ -46,9 +46,9 @@ if __name__ == "__main__":
 
     # ALIGNED_IMAGES_DIR = sys.argv[2]
 
-    ALIGNED_IMAGES_DIR = '/home/hfutzny/sda/casual_face/CIS/data/DISFA'
+    ALIGNED_IMAGES_DIR = '/home/hfut1609/Disk_sda/hzy/faceAU/dataset/images'
     landmarks_detector = LandmarksDetector(landmarks_model_path)
-    path = '/home/hfutzny/sda/casual_face/dataset/DISFA'
+    path = '/home/hfut1609/Disk_sda/hzy/faceAU/dataset/raw_images'
     filelists = os.listdir(path)
     filelists.sort() #对读取的路径进行排序
     for filelist in filelists:

@@ -6,7 +6,7 @@ from ruamel import yaml
 from torch.autograd.grad_mode import F
 from au_lib.data_utils import compute_label_frequency
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,3'
+#os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,3'
 
 if __name__ == "__main__":
 
@@ -19,17 +19,17 @@ if __name__ == "__main__":
     parser.add_argument('-c',
                         '--config_dir',
                         type=str,
-                        default='./config/exp2',
+                        default='./config/exp1',
                         help='config dir name')
     parser.add_argument('-w',
                         '--work_dir',
                         type=str,
-                        default='./work_dir/train/disfa/exp3',
+                        default='./work_dir/train/disfa/exp1',
                         help='work dir name')
     parser.add_argument('-d',
                         '--data_dir',
                         type=str,
-                        default='/home/hfutzny/sda/casual_face/CIS/data/DISFA/list_random1',
+                        default='/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1',
                         help='data dir name')
     parser.add_argument('-k', '--kfold', type=int, default=3, help='kfold')
     parser.add_argument('--num_class',

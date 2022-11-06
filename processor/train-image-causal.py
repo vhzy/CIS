@@ -75,7 +75,7 @@ class REC_Processor(Processor):
         if self.arg.pretrain and self.arg.model_args['backbone'] in [
                 'resnet18'
         ]:
-            pretrained_dict = models.resnet18(pretrained=True).state_dict()
+            pretrained_dict = models.resnet18(weights='ResNet18_Weights.DEFAULT').state_dict()
             for k, v in pretrained_dict.items():
                 if "layer1" in k:
                     update_dict[k.replace("layer1", "encoder.4", 1)] = v
@@ -101,7 +101,7 @@ class REC_Processor(Processor):
         elif self.arg.pretrain and self.arg.model_args['backbone'] in [
                 'resnet34'
         ]:
-            pretrained_dict = models.resnet34(pretrained=True).state_dict()
+            pretrained_dict = models.resnet34(weights='ResNet34_Weights.DEFAULT').state_dict()
             for k, v in pretrained_dict.items():
                 if "layer1" in k:
                     update_dict[k.replace("layer1", "encoder.4", 1)] = v
@@ -127,7 +127,7 @@ class REC_Processor(Processor):
         elif self.arg.pretrain and self.arg.model_args['backbone'] in [
                 'resnet50'
         ]:
-            pretrained_dict = models.resnet50(pretrained=True).state_dict()
+            pretrained_dict = models.resnet50(weights='ResNet50_Weights.DEFAULT').state_dict()
             for k, v in pretrained_dict.items():
                 if "layer1" in k:
                     update_dict[k.replace("layer1", "encoder.4", 1)] = v
@@ -230,14 +230,14 @@ class REC_Processor(Processor):
             label = label.float().to(self.dev)
             image = image.float().to(self.dev)
 
-            # forward
+            # forward 对于大于0epoch时，已经计算出来了字典，可以进行注意力
             if self.meta_info['epoch'] >= self.arg.clf_only_epoch:
                 feature, output = self.model(
                     image, subject_infos=[self.K_subject, self.V_subject])
             else:
                 feature, output = self.model(image)
 
-            # collect subject feature
+            # collect subject feature，这里是创建每个人的混淆字典特征
             for sidx, sub_id in enumerate(subject_id):
                 if sub_id not in self.subject_prototype_update:
                     self.subject_prototype_update[sub_id] = []
@@ -252,7 +252,7 @@ class REC_Processor(Processor):
 
             if self.meta_info['epoch'] > 0 or self.arg.clf_only_epoch > 1:
                 loss = self.loss(output, label)
-                # backward
+                # backward，大于0时进行梯度回传，否则第一轮式停止反向传播来初始化词典
                 self.optimizer.zero_grad()
                 loss.backward()
                 self.optimizer.step()
