@@ -1,7 +1,7 @@
 #custom
 .vscode
 tmp*
-work_dir/*
+
 config/*
 models/*
 
@@ -18,11 +18,11 @@ __pycache__/
 
 # C extensions
 *.so
-
+events.*
 # R
 .RData
 .Rhistory
-
+*.zip
 # Distribution / packaging
 .Python
 build/

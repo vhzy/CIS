@@ -1,0 +1,635 @@
+[11.05.22|21:45:17] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 64, 'test_batch_size': 64, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.06163081425493427, 0.05641137906004079, 0.1836711179730617, 0.07841826917537532, 0.03940500743164614, 0.13017478770840293, 0.2915970549941814, 0.07301448306852093], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|21:45:17] Training epoch: 0
+[11.05.22|21:48:13] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 64, 'test_batch_size': 64, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.06163081425493427, 0.05641137906004079, 0.1836711179730617, 0.07841826917537532, 0.03940500743164614, 0.13017478770840293, 0.2915970549941814, 0.07301448306852093], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|21:48:13] Training epoch: 0
+[11.05.22|21:50:08] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 64, 'test_batch_size': 64, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.06163081425493427, 0.05641137906004079, 0.1836711179730617, 0.07841826917537532, 0.03940500743164614, 0.13017478770840293, 0.2915970549941814, 0.07301448306852093], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|21:50:08] Training epoch: 0
+[11.05.22|21:56:11] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 64, 'test_batch_size': 64, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.06163081425493427, 0.05641137906004079, 0.1836711179730617, 0.07841826917537532, 0.03940500743164614, 0.13017478770840293, 0.2915970549941814, 0.07301448306852093], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|21:56:11] Training epoch: 0
+[11.05.22|22:11:25] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 64, 'test_batch_size': 64, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.06163081425493427, 0.05641137906004079, 0.1836711179730617, 0.07841826917537532, 0.03940500743164614, 0.13017478770840293, 0.2915970549941814, 0.07301448306852093], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|22:11:25] Training epoch: 0
+[11.05.22|22:21:29] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 64, 'test_batch_size': 64, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.045413679430139006, 0.03212383872380645, 0.13734756448973007, 0.06657599299200073, 0.03996173263560709, 0.12049609257935867, 0.30473270476497843, 0.10414025219576292], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|22:21:29] Training epoch: 0
+[11.05.22|22:23:48] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 64, 'test_batch_size': 64, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.045413679430139006, 0.03212383872380645, 0.13734756448973007, 0.06657599299200073, 0.03996173263560709, 0.12049609257935867, 0.30473270476497843, 0.10414025219576292], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|22:23:48] Training epoch: 0
+[11.05.22|22:24:29] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 4, 'test_batch_size': 4, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.045413679430139006, 0.03212383872380645, 0.13734756448973007, 0.06657599299200073, 0.03996173263560709, 0.12049609257935867, 0.30473270476497843, 0.10414025219576292], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|22:24:29] Training epoch: 0
+[11.05.22|22:25:38] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 64, 'test_batch_size': 64, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.045413679430139006, 0.03212383872380645, 0.13734756448973007, 0.06657599299200073, 0.03996173263560709, 0.12049609257935867, 0.30473270476497843, 0.10414025219576292], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|22:25:38] Training epoch: 0
+[11.05.22|22:37:30] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 64, 'test_batch_size': 64, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.05919846932306735, 0.045562996346200396, 0.15979898339077214, 0.09075715487730379, 0.05117624684470776, 0.1350522712341083, 0.31323551447112113, 0.07716778662732397], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|22:37:30] Training epoch: 0
+[11.05.22|22:37:30] 	Iter 0 Done. | loss: 0 | lr: 0.001000
+[11.05.22|22:38:03] Parameters:
+{'work_dir': './work_dir/train/disfa/exp1/0', 'config': './config/exp1/train0.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 15, 'use_gpu': True, 'device': [0], 'log_interval': 1000, 'save_interval': 5, 'eval_interval': 1, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_image_causal.Feeder', 'num_worker': 0, 'train_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train0_imagepath.pkl', 'image_size': 256, 'istrain': True, 'debug': False}, 'test_feeder_args': {'label_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_label.pkl', 'image_path': '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test0_imagepath.pkl', 'image_size': 256, 'istrain': False, 'debug': False}, 'batch_size': 64, 'test_batch_size': 64, 'debug': False, 'model': 'net.CISNet.Model', 'model_args': {'num_class': 8, 'backbone': 'resnet34', 'temporal_model': 'single', 'subject': True, 'pooling': True, 'd_in': 512, 'd_m': 256, 'd_out': 512}, 'weights': None, 'ignore_weights': [], 'seed': 42, 'base_lr': 0.001, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0005, 'lr_decay': 0.3, 'loss': 'clf', 'loss_weight': [0.05919846932306735, 0.045562996346200396, 0.15979898339077214, 0.09075715487730379, 0.05117624684470776, 0.1350522712341083, 0.31323551447112113, 0.07716778662732397], 'resume': '', 'backbone_only': True, 'pretrain': True, 'clf_only_epoch': 1}
+
+[11.05.22|22:38:03] Training epoch: 0
+[11.05.22|22:38:03] 	Iter 0 Done. | loss: 0 | lr: 0.001000
+[11.05.22|22:43:27] 	Iter 1000 Done. | loss: 0 | lr: 0.001000
+[11.05.22|22:45:39] 	mean_loss: 0.0
+[11.05.22|22:45:39] Time consumption:
+===> loss: 0.0
+===> f1: [1.28123405e-01 8.74523875e-02 2.88387628e-01 8.32168413e-02
+ 9.73777734e-02 1.70044932e-04 9.95230435e-03 2.02837649e-01]
+===> acc: [0.40895987 0.05350554 0.32916282 0.74948109 0.05169511 0.86440268
+ 0.67880535 0.68775369]
+===> TP: [3.7660e+03 3.9330e+03 1.1788e+04 9.8600e+02 4.4360e+03 1.0000e+00
+ 1.4000e+02 3.4450e+03]
+===> TN: [3.1699e+04 7.0700e+02 1.6757e+04 6.4009e+04 4.7000e+01 7.4960e+04
+ 5.8726e+04 5.6197e+04]
+===> FN: [1.3690e+03 1.9000e+01 2.0690e+03 6.8830e+03 2.0000e+00 1.1709e+04
+ 2.7026e+04 3.2470e+03]
+===> FP: [4.9886e+04 8.2061e+04 5.6106e+04 1.4842e+04 8.2235e+04 5.0000e+01
+ 8.2800e+02 2.3831e+04]
+===> rec: [7.33398247e-01 9.95192308e-01 8.50689182e-01 1.25301817e-01
+ 9.99549347e-01 8.53970965e-05 5.15350070e-03 5.14793784e-01]
+===> prec: [0.0701931  0.04573575 0.17362359 0.06229467 0.05118206 0.01960784
+ 0.1446281  0.12630151]
+===> average f1: 0.11218975419460861
+===> average acc: 0.4779707679889299
+[11.05.22|22:45:46] Done.
+[11.05.22|22:45:46] Eval epoch: 0
+[11.05.22|22:49:34] 	mean_loss: 0.6557187084409459
+===> loss: 0.6557187084409459
+===> f1: [0.03888265 0.05741685 0.25079429 0.03690668 0.04632179 0.0011612
+ 0.01253845 0.15488668]
+===> acc: [0.38181443 0.0304699  0.24274963 0.88025422 0.02406847 0.88158499
+ 0.78677955 0.71055892]
+===> TP: [5.450e+02 1.287e+03 5.524e+03 1.000e+02 1.033e+03 3.000e+00 5.900e+01
+ 1.156e+03]
+===> TN: [1.6096e+04 4.1000e+01 5.0560e+03 3.8265e+04 1.6000e+01 3.8420e+04
+ 3.4232e+04 2.9813e+04]
+===> FN: [ 817.    0.  178. 2353.    0. 5116. 9012. 3682.]
+===> FP: [26126. 42256. 32826.  2866. 42535.    45.   281.  8933.]
+===> rec: [4.00146843e-01 1.00000000e+00 9.68782883e-01 4.07664085e-02
+ 1.00000000e+00 5.86051963e-04 6.50424430e-03 2.38941711e-01]
+===> prec: [0.02043418 0.02955699 0.14404172 0.03371544 0.02371006 0.0625
+ 0.17352941 0.11458024]
+===> average f1: 0.07486357374210874
+===> average acc: 0.4922850128487518
+[11.05.22|22:49:37] Done.
+[11.05.22|22:49:37] Training epoch: 1
+[11.05.22|22:54:44] 	Iter 2000 Done. | loss: 0.1759 | lr: 0.001000
+[11.05.22|23:00:26] 	mean_loss: 0.24730815238618323
+[11.05.22|23:00:26] Time consumption:
+===> loss: 0.24730815238618323
+===> f1: [0.         0.02323083 0.0158113  0.         0.02632911 0.
+ 0.27336277 0.00204017]
+===> acc: [0.94063653 0.93600092 0.83634686 0.90927122 0.9351822  0.86496771
+ 0.72922048 0.92103321]
+===> TP: [   0.   66.  114.    0.   76.    0. 4417.    7.]
+===> TN: [81572. 81104. 72414. 78852. 81023. 75010. 58821. 79865.]
+===> FN: [ 5135.  3886. 13744.  7868.  4362. 11710. 22747.  6683.]
+===> FP: [  13. 1664.  448.    0. 1259.    0.  735.  165.]
+===> rec: [0.         0.0167004  0.0082263  0.         0.01712483 0.
+ 0.16260492 0.00104634]
+===> prec: [0.         0.03815029 0.20284697 0.         0.05692884 0.
+ 0.85733696 0.04069767]
+===> average f1: 0.04259677313049755
+===> average acc: 0.884082391605166
+[11.05.22|23:00:32] Done.
+[11.05.22|23:00:32] Eval epoch: 1
+[11.05.22|23:04:14] 	mean_loss: 0.20725920325194358
+===> loss: 0.20725920325194358
+===> f1: [0.        0.        0.        0.        0.        0.        0.4843434
+ 0.       ]
+===> acc: [0.96875    0.97047081 0.86917217 0.94371788 0.97629864 0.88254864
+ 0.85792952 0.88899596]
+===> TP: [   0.    0.    0.    0.    0.    0. 2908.    0.]
+===> TN: [42222. 42297. 37882. 41131. 42551. 38465. 34484. 38746.]
+===> FN: [1362. 1287. 5702. 2453. 1033. 5119. 6163. 4838.]
+===> FP: [ 0.  0.  0.  0.  0.  0. 29.  0.]
+===> rec: [0.         0.         0.         0.         0.         0.
+ 0.32058207 0.        ]
+===> prec: [0.         0.         0.         0.         0.         0.
+ 0.99012598 0.        ]
+===> average f1: 0.060542925156382606
+===> average acc: 0.9197354533773863
+[11.05.22|23:04:16] Done.
+[11.05.22|23:04:16] Training epoch: 2
+[11.05.22|23:06:33] 	Iter 3000 Done. | loss: 0.1788 | lr: 0.001000
+[11.05.22|23:14:29] 	Iter 4000 Done. | loss: 0.1258 | lr: 0.001000
+[11.05.22|23:14:59] 	mean_loss: 0.1591510822247315
+[11.05.22|23:14:59] Time consumption:
+===> loss: 0.1591510822247315
+===> f1: [0.         0.         0.50088956 0.00758245 0.01073824 0.24511468
+ 0.92990344 0.        ]
+===> acc: [0.94079797 0.95442804 0.89005996 0.90944419 0.9490083  0.87882841
+ 0.95641144 0.92284363]
+===> TP: [0.0000e+00 0.0000e+00 4.7840e+03 3.0000e+01 2.4000e+01 1.7060e+03
+ 2.5073e+04 0.0000e+00]
+===> TN: [81586. 82768. 72402. 78837. 82274. 74506. 57867. 80029.]
+===> FN: [ 5134.  3952.  9074.  7842.  4412. 10007.  2091.  6691.]
+===> FP: [   0.    0.  460.   11.   10.  501. 1689.    0.]
+===> rec: [0.         0.         0.34521576 0.00381098 0.00541028 0.14565013
+ 0.92302312 0.        ]
+===> prec: [0.         0.         0.9122807  0.7317073  0.70588233 0.77299502
+ 0.93688812 0.        ]
+===> average f1: 0.21177854597823176
+===> average acc: 0.9252277444649446
+[11.05.22|23:15:05] Done.
+[11.05.22|23:15:05] Eval epoch: 2
+[11.05.22|23:18:45] 	mean_loss: 0.17879573090334264
+===> loss: 0.17879573090334264
+===> f1: [0.         0.         0.12407415 0.         0.         0.40897105
+ 0.75766803 0.        ]
+===> acc: [0.96875    0.97047081 0.8425569  0.94371788 0.97629864 0.91233021
+ 0.91824982 0.88899596]
+===> TP: [   0.    0.  486.    0.    0. 1322. 5570.    0.]
+===> TN: [42222. 42297. 36236. 41131. 42551. 38441. 34451. 38746.]
+===> FN: [1362. 1287. 5216. 2453. 1033. 3797. 3501. 4838.]
+===> FP: [   0.    0. 1646.    0.    0.   24.   62.    0.]
+===> rec: [0.         0.         0.08523325 0.         0.         0.25825357
+ 0.61404476 0.        ]
+===> prec: [0.         0.         0.22795497 0.         0.         0.98216939
+ 0.98899148 0.        ]
+===> average f1: 0.16133915445089297
+===> average acc: 0.9276712784508077
+[11.05.22|23:18:48] Done.
+[11.05.22|23:18:48] Training epoch: 3
+[11.05.22|23:26:12] 	Iter 5000 Done. | loss: 0.1249 | lr: 0.001000
+[11.05.22|23:29:31] 	mean_loss: 0.10881470491855347
+[11.05.22|23:29:31] Time consumption:
+===> loss: 0.10881470491855347
+===> f1: [9.68991245e-03 5.06072368e-04 8.80819071e-01 5.75982366e-01
+ 4.33048052e-01 7.73666280e-01 9.60914902e-01 1.04011784e-02]
+===> acc: [0.94107472 0.95445111 0.96230397 0.94079797 0.96098939 0.94406135
+ 0.97546125 0.92320111]
+===> TP: [2.5000e+01 1.0000e+00 1.2080e+04 3.4870e+03 1.2920e+03 8.2910e+03
+ 2.6159e+04 3.5000e+01]
+===> TN: [81585. 82769. 71371. 78099. 82045. 73578. 58433. 80025.]
+===> FN: [5109. 3950. 1776. 4379. 3145. 3417. 1004. 6660.]
+===> FP: [1.000e+00 0.000e+00 1.493e+03 7.550e+02 2.380e+02 1.434e+03 1.124e+03
+ 0.000e+00]
+===> rec: [4.86949747e-03 2.53100481e-04 8.71824480e-01 4.43300280e-01
+ 2.91187739e-01 7.08148275e-01 9.63037956e-01 5.22778193e-03]
+===> prec: [0.96153842 0.999999   0.89000221 0.82201792 0.84444444 0.85254499
+ 0.95880218 0.99999997]
+===> average f1: 0.4556284791969605
+===> average acc: 0.950292608394834
+[11.05.22|23:29:37] Done.
+[11.05.22|23:29:37] Eval epoch: 3
+[11.05.22|23:33:21] 	mean_loss: 0.18666524817528088
+===> loss: 0.18666524817528088
+===> f1: [0.         0.         0.1930469  0.63479099 0.0257826  0.59123051
+ 0.77577802 0.        ]
+===> acc: [0.96875    0.97047081 0.79494769 0.96705213 0.97572504 0.93112151
+ 0.92251744 0.88899596]
+===> TP: [   0.    0. 1069. 1248.   14. 2171. 5842.    0.]
+===> TN: [42222. 42297. 33578. 40900. 42512. 38411. 34365. 38746.]
+===> FN: [1362. 1287. 4633. 1205. 1019. 2948. 3229. 4838.]
+===> FP: [   0.    0. 4304.  231.   39.   54.  148.    0.]
+===> rec: [0.         0.         0.18747808 0.50876478 0.01355276 0.42410627
+ 0.64403043 0.        ]
+===> prec: [0.         0.         0.19895775 0.84381339 0.26415094 0.97573034
+ 0.97529215 0.        ]
+===> average f1: 0.277578627707069
+===> average acc: 0.927447572503671
+[11.05.22|23:33:23] Done.
+[11.05.22|23:33:23] Training epoch: 4
+[11.05.22|23:37:54] 	Iter 6000 Done. | loss: 0.1015 | lr: 0.001000
+[11.05.22|23:43:57] 	mean_loss: 0.08177164100742867
+[11.05.22|23:43:57] Time consumption:
+===> loss: 0.08177164100742867
+===> f1: [0.22781345 0.30726587 0.92448841 0.72176383 0.71369687 0.84280553
+ 0.96990555 0.38529902]
+===> acc: [0.94762454 0.96251153 0.9758072  0.95679197 0.97514991 0.95997463
+ 0.98108856 0.94020987]
+===> TP: [  670.   721. 12843.  4860.  2686.  9305. 26428.  1625.]
+===> TN: [81508. 82748. 71779. 78113. 81879. 73944. 58652. 79910.]
+===> FN: [4464. 3230. 1015. 3012. 1752. 2409.  740. 5070.]
+===> FP: [  78.   21. 1083.  735.  403. 1062.  900.  115.]
+===> rec: [0.13050253 0.18248545 0.92675711 0.61737805 0.60522758 0.79434864
+ 0.97276207 0.24271845]
+===> prec: [0.89572192 0.97169811 0.9222318  0.86863271 0.86953707 0.89755956
+ 0.96706674 0.93390805]
+===> average f1: 0.6366298172397986
+===> average acc: 0.9623947762915129
+[11.05.22|23:44:03] Done.
+[11.05.22|23:44:03] The model has been saved as ./work_dir/train/disfa/exp1/0/epoch5_model.pt.
+[11.05.22|23:44:03] Eval epoch: 4
+[11.05.22|23:47:45] 	mean_loss: 0.19304067136329378
+===> loss: 0.19304067136329378
+===> f1: [0.         0.         0.25705923 0.63551811 0.07407373 0.59140297
+ 0.76124801 0.030118  ]
+===> acc: [0.96682269 0.9701496  0.80079846 0.96581314 0.97189336 0.92758811
+ 0.9189152  0.89064794]
+===> TP: [   0.    0. 1502. 1299.   49. 2284. 5634.   74.]
+===> TN: [42138. 42283. 33400. 40795. 42310. 38144. 34416. 38744.]
+===> FN: [1362. 1287. 4200. 1154.  984. 2835. 3437. 4764.]
+===> FP: [8.400e+01 1.400e+01 4.482e+03 3.360e+02 2.410e+02 3.210e+02 9.700e+01
+ 2.000e+00]
+===> rec: [0.         0.         0.26341635 0.52955565 0.04743466 0.44618089
+ 0.62110021 0.01529558]
+===> prec: [0.         0.         0.25100267 0.79449541 0.16896552 0.87677543
+ 0.98307451 0.9736842 ]
+===> average f1: 0.2936775060315441
+===> average acc: 0.9265785609397945
+[11.05.22|23:47:48] Done.
+[11.05.22|23:47:48] Training epoch: 5
+[11.05.22|23:49:34] 	Iter 7000 Done. | loss: 0.0667 | lr: 0.001000
+[11.05.22|23:57:26] 	Iter 8000 Done. | loss: 0.0515 | lr: 0.001000
+[11.05.22|23:58:28] 	mean_loss: 0.06251571731731241
+[11.05.22|23:58:28] Time consumption:
+===> loss: 0.06251571731731241
+===> f1: [0.54689984 0.75707031 0.9427346  0.81753997 0.79344626 0.88477551
+ 0.97483809 0.74381894]
+===> acc: [0.96123155 0.98167666 0.98175738 0.96958026 0.98110009 0.96977629
+ 0.98427122 0.9670203 ]
+===> TP: [ 2029.  2476. 13022.  5910.  3148. 10063. 26423.  4152.]
+===> TN: [81329. 82655. 72116. 78172. 81933. 74036. 58933. 79708.]
+===> FN: [3105. 1475.  840. 1960. 1291. 1648.  742. 2538.]
+===> FP: [257. 114. 742. 678. 348. 973. 622. 322.]
+===> rec: [0.39520841 0.62667679 0.93940268 0.75095299 0.70916873 0.8592776
+ 0.97268544 0.6206278 ]
+===> prec: [0.88757655 0.95598456 0.94609125 0.89708561 0.90045767 0.911834
+ 0.97700129 0.92802861]
+===> average f1: 0.8076404407432851
+===> average acc: 0.9745517181734318
+[11.05.22|23:58:34] Done.
+[11.05.22|23:58:34] Eval epoch: 5
+[11.06.22|00:02:15] 	mean_loss: 0.1954956373135117
+===> loss: 0.1954956373135117
+===> f1: [0.00200257 0.         0.31838808 0.6130717  0.19566601 0.57328269
+ 0.84420509 0.12621706]
+===> acc: [0.95427221 0.95902166 0.78338381 0.9610178  0.97189336 0.92458242
+ 0.94213473 0.89294236]
+===> TP: [2.000e+00 0.000e+00 2.205e+03 1.346e+03 1.490e+02 2.208e+03 6.833e+03
+ 3.370e+02]
+===> TN: [41589. 41798. 31938. 40539. 42210. 38089. 34229. 38581.]
+===> FN: [1360. 1287. 3497. 1107.  884. 2911. 2238. 4501.]
+===> FP: [ 633.  499. 5944.  592.  341.  376.  284.  165.]
+===> rec: [0.00146843 0.         0.38670642 0.54871586 0.14424008 0.43133424
+ 0.75327968 0.06965688]
+===> prec: [0.00314961 0.         0.27058535 0.69453044 0.30408163 0.85448916
+ 0.96009555 0.67131474]
+===> average f1: 0.33410415022210077
+===> average acc: 0.9236560435022027
+[11.06.22|00:02:17] Done.
+[11.06.22|00:02:17] Training epoch: 6
+[11.06.22|00:09:06] 	Iter 9000 Done. | loss: 0.0283 | lr: 0.001000
+[11.06.22|00:12:52] 	mean_loss: 0.04982321153487666
+[11.06.22|00:12:52] Time consumption:
+===> loss: 0.04982321153487666
+===> f1: [0.70799529 0.83226297 0.95398991 0.86777306 0.82067198 0.90641032
+ 0.97524831 0.83413772]
+===> acc: [0.97132149 0.9861393  0.98540129 0.9771333  0.98339483 0.97525369
+ 0.98457103 0.97702952]
+===> TP: [ 3015.  2982. 13125.  6507.  3295. 10392. 26360.  5009.]
+===> TN: [81218. 82536. 72329. 78230. 81985. 74182. 59022. 79719.]
+===> FN: [2120.  971.  732. 1363. 1143. 1319.  808. 1685.]
+===> FP: [367. 231. 534. 620. 297. 827. 530. 307.]
+===> rec: [0.58714703 0.75436377 0.94717471 0.82681067 0.74245155 0.88737085
+ 0.97025913 0.74828204]
+===> prec: [0.89148433 0.92810457 0.9609049  0.91300688 0.91731626 0.92628577
+ 0.98029007 0.94224981]
+===> average f1: 0.8623111947707689
+===> average acc: 0.9800305581180812
+[11.06.22|00:12:57] Done.
+[11.06.22|00:12:57] Eval epoch: 6
+[11.06.22|00:16:34] 	mean_loss: 0.19628857984679812
+===> loss: 0.19628857984679812
+===> f1: [0.00888314 0.02205096 0.31178144 0.61150564 0.18695317 0.60948416
+ 0.81376312 0.21863283]
+===> acc: [0.92320576 0.93284233 0.78971641 0.95863161 0.97226046 0.92593612
+ 0.93405837 0.89454846]
+===> TP: [  15.   33. 2076. 1419.  139. 2519. 6279.  643.]
+===> TN: [40222. 40624. 32343. 40362. 42236. 37837. 34431. 38345.]
+===> FN: [1347. 1254. 3626. 1034.  894. 2600. 2792. 4195.]
+===> FP: [2000. 1673. 5539.  769.  315.  628.   82.  401.]
+===> rec: [0.01101322 0.02564103 0.36408278 0.57847534 0.13455954 0.4920883
+ 0.69220593 0.13290616]
+===> prec: [0.00744417 0.01934349 0.27261983 0.64853748 0.3061674  0.80044487
+ 0.98710894 0.61590038]
+===> average f1: 0.347881809901384
+===> average acc: 0.9163999403450809
+[11.06.22|00:16:36] Done.
+[11.06.22|00:16:36] Training epoch: 7
+[11.06.22|00:20:36] 	Iter 10000 Done. | loss: 0.0452 | lr: 0.001000
+[11.06.22|00:27:05] 	mean_loss: 0.04104727272604115
+[11.06.22|00:27:05] Time consumption:
+===> loss: 0.04104727272604115
+===> f1: [0.78350921 0.8602526  0.96060192 0.89840497 0.8392697  0.9244176
+ 0.97667826 0.88174407]
+===> acc: [0.9773524  0.98815729 0.98751153 0.98199954 0.98506688 0.98000461
+ 0.98547048 0.98299124]
+===> TP: [ 3554.  3161. 13203.  6902.  3381. 10604. 26384.  5499.]
+===> TN: [81202. 82532. 72434. 78257. 82044. 74382. 59076. 79746.]
+===> FN: [1580.  788.  652.  970. 1058. 1109.  781. 1194.]
+===> FP: [384. 239. 431. 591. 237. 625. 479. 281.]
+===> rec: [0.69224776 0.80045581 0.95294118 0.87677846 0.76165803 0.90531888
+ 0.97124977 0.82160466]
+===> prec: [0.90248857 0.92970588 0.96838785 0.92112638 0.9344942  0.94434055
+ 0.98216878 0.95138408]
+===> average f1: 0.890609791257353
+===> average acc: 0.9835692458487085
+[11.06.22|00:27:11] Done.
+[11.06.22|00:27:11] Eval epoch: 7
+[11.06.22|00:30:47] 	mean_loss: 0.19830406428321776
+===> loss: 0.19830406428321776
+===> f1: [0.00340434 0.0028151  0.3019001  0.62340168 0.10084011 0.57682574
+ 0.8246398  0.26678952]
+===> acc: [0.93284233 0.95124358 0.78088289 0.96484949 0.97544971 0.92290749
+ 0.93736233 0.89078561]
+===> TP: [5.000e+00 3.000e+00 2.065e+03 1.268e+03 6.000e+01 2.290e+03 6.419e+03
+ 8.660e+02]
+===> TN: [40652. 41456. 31969. 40784. 42454. 37934. 34435. 37958.]
+===> FN: [1357. 1284. 3637. 1185.  973. 2829. 2652. 3972.]
+===> FP: [1570.  841. 5913.  347.   97.  531.   78.  788.]
+===> rec: [0.00367107 0.002331   0.36215363 0.51691806 0.05808325 0.447353
+ 0.70763973 0.17899959]
+===> prec: [0.0031746  0.0035545  0.2588368  0.78513932 0.3821656  0.81176888
+ 0.98799446 0.5235792 ]
+===> average f1: 0.337577047981333
+===> average acc: 0.9195404276798825
+[11.06.22|00:30:49] Done.
+[11.06.22|00:30:49] Training epoch: 8
+[11.06.22|00:32:03] 	Iter 11000 Done. | loss: 0.0449 | lr: 0.001000
+[11.06.22|00:39:49] 	Iter 12000 Done. | loss: 0.0372 | lr: 0.001000
+[11.06.22|00:41:18] 	mean_loss: 0.03406951465193746
+[11.06.22|00:41:18] Time consumption:
+===> loss: 0.03406951465193746
+===> f1: [0.85621209 0.88146415 0.96559941 0.92036939 0.85522672 0.9362067
+ 0.98074737 0.90891939]
+===> acc: [0.98421356 0.98977168 0.9890798  0.98570111 0.98655443 0.98307196
+ 0.98800738 0.98660055]
+===> TP: [ 4076.  3298. 13291.  7166.  3444. 10772. 26490.  5798.]
+===> TN: [81275. 82535. 72482. 78314. 82110. 74480. 59190. 79760.]
+===> FN: [1058.  653.  567.  703.  991.  936.  673.  894.]
+===> FP: [311. 234. 380. 537. 175. 532. 367. 268.]
+===> rec: [0.79392287 0.83472539 0.95908501 0.91066209 0.77655017 0.92005466
+ 0.97522365 0.86640765]
+===> prec: [0.92910873 0.93374858 0.97220394 0.9302869  0.9516441  0.95293701
+ 0.98633503 0.95581932]
+===> average f1: 0.9130931539022702
+===> average acc: 0.9866250576568265
+[11.06.22|00:41:24] Done.
+[11.06.22|00:41:24] Eval epoch: 8
+[11.06.22|00:44:58] 	mean_loss: 0.19935915862513015
+===> loss: 0.19935915862513015
+===> f1: [0.09402189 0.07587427 0.37477902 0.63494304 0.11202611 0.58774939
+ 0.83506089 0.32404263]
+===> acc: [0.89741648 0.942433   0.78044695 0.96514776 0.97526615 0.92664739
+ 0.94050569 0.8747935 ]
+===> TP: [ 232.  103. 2868. 1321.   68. 2279. 6564. 1308.]
+===> TN: [38881. 40972. 31147. 40744. 42438. 38108. 34427. 36819.]
+===> FN: [1130. 1184. 2834. 1132.  965. 2840. 2507. 3530.]
+===> FP: [3341. 1325. 6735.  387.  113.  357.   86. 1927.]
+===> rec: [0.17033774 0.08003108 0.50298141 0.53852426 0.06582769 0.44520414
+ 0.72362474 0.27035965]
+===> prec: [0.06493143 0.07212885 0.29865667 0.7734192  0.37569061 0.86456753
+ 0.98706767 0.40432767]
+===> average f1: 0.3798121541127024
+===> average acc: 0.912832117290749
+[11.06.22|00:45:00] Done.
+[11.06.22|00:45:00] Training epoch: 9
+[11.06.22|00:51:14] 	Iter 13000 Done. | loss: 0.0172 | lr: 0.001000
+[11.06.22|00:55:28] 	mean_loss: 0.02866464259955221
+[11.06.22|00:55:28] Time consumption:
+===> loss: 0.02866464259955221
+===> f1: [0.90899808 0.90354202 0.96889937 0.93965412 0.87085552 0.94609688
+ 0.98370731 0.93081323]
+===> acc: [0.9896679  0.9916167  0.99012915 0.9890798  0.98796125 0.98568958
+ 0.98984087 0.98965637]
+===> TP: [ 4475.  3405. 13334.  7373.  3520. 10891. 26597.  6034.]
+===> TN: [81349. 82588. 72530. 78400. 82156. 74588. 59242. 79789.]
+===> FN: [658. 544. 521. 498. 918. 818. 561. 658.]
+===> FP: [238. 183. 335. 449. 126. 423. 320. 239.]
+===> rec: [0.87180986 0.86224361 0.96239625 0.93672977 0.79315007 0.93013921
+ 0.9793431  0.90167364]
+===> prec: [0.94950138 0.94899666 0.97549199 0.9425978  0.96544158 0.96261269
+ 0.9881116  0.96190021]
+===> average f1: 0.9315708170258271
+===> average acc: 0.9892052006457565
+[11.06.22|00:55:34] Done.
+[11.06.22|00:55:34] The model has been saved as ./work_dir/train/disfa/exp1/0/epoch10_model.pt.
+[11.06.22|00:55:34] Eval epoch: 9
+[11.06.22|00:59:10] 	mean_loss: 0.2023261256965134
+===> loss: 0.2023261256965134
+===> f1: [0.05665046 0.0214358  0.32442188 0.63782086 0.10304032 0.61175525
+ 0.86264535 0.30961272]
+===> acc: [0.92205855 0.95810389 0.76922724 0.9673504  0.97563326 0.93013491
+ 0.94894916 0.83126836]
+===> TP: [ 102.   20. 2415. 1253.   61. 2399. 6987. 1649.]
+===> TN: [40085. 41738. 31111. 40908. 42461. 38140. 34372. 34581.]
+===> FN: [1260. 1267. 3287. 1200.  972. 2720. 2084. 3189.]
+===> FP: [2137.  559. 6771.  223.   90.  325.  141. 4165.]
+===> rec: [0.07488987 0.01554002 0.4235356  0.5108031  0.05905131 0.46864622
+ 0.77025686 0.34084332]
+===> prec: [0.04555605 0.03454231 0.26290007 0.84891599 0.40397351 0.88069016
+ 0.98021886 0.28362573]
+===> average f1: 0.3659228301778696
+===> average acc: 0.9128407213656388
+[11.06.22|00:59:13] Done.
+[11.06.22|00:59:13] Training epoch: 10
+[11.06.22|01:02:42] 	Iter 14000 Done. | loss: 0.0259 | lr: 0.001000
+[11.06.22|01:09:45] 	mean_loss: 0.025004906216945594
+[11.06.22|01:09:45] Time consumption:
+===> loss: 0.025004906216945594
+===> f1: [0.9294982  0.91845781 0.97025122 0.95027011 0.8792206  0.95215323
+ 0.98590511 0.93918869]
+===> acc: [0.99185886 0.99282749 0.99055581 0.990994   0.98869926 0.9872809
+ 0.99120157 0.99086716]
+===> TP: [ 4654.  3503. 13356.  7462.  3567. 10975. 26686.  6116.]
+===> TN: [81360. 82595. 72545. 78477. 82173. 74642. 59271. 79812.]
+===> FN: [481. 450. 503. 406. 870. 735. 476. 575.]
+===> FP: [225. 172. 316. 375. 110. 368. 287. 217.]
+===> rec: [0.90632911 0.88616241 0.9637059  0.94839858 0.80392157 0.93723313
+ 0.98247552 0.91406367]
+===> prec: [0.95388399 0.95319728 0.97688707 0.95215006 0.97008431 0.96755708
+ 0.98935973 0.96573504]
+===> average f1: 0.9406181221187373
+===> average acc: 0.9905356319188192
+[11.06.22|01:09:51] Done.
+[11.06.22|01:09:51] Eval epoch: 10
+[11.06.22|01:13:27] 	mean_loss: 0.20580770590941122
+===> loss: 0.20580770590941122
+===> f1: [0.10015139 0.09274144 0.38068245 0.62017961 0.13469948 0.610671
+ 0.86753739 0.34928582]
+===> acc: [0.87754681 0.94837555 0.77902441 0.96225679 0.97287996 0.92098018
+ 0.95046347 0.83996421]
+===> TP: [ 297.  115. 2960. 1343.   92. 2701. 7070. 1872.]
+===> TN: [37950. 41219. 30993. 40596. 42310. 37439. 34355. 34737.]
+===> FN: [1065. 1172. 2742. 1110.  941. 2418. 2001. 2966.]
+===> FP: [4272. 1078. 6889.  535.  241. 1026.  158. 4009.]
+===> rec: [0.21806167 0.08935509 0.5191161  0.54749287 0.08906099 0.52764212
+ 0.7794069  0.38693675]
+===> prec: [0.06500328 0.09639564 0.30053813 0.71512247 0.27627628 0.72471156
+ 0.97814056 0.31831321]
+===> average f1: 0.3944935725916578
+===> average acc: 0.9064364216226137
+[11.06.22|01:13:29] Done.
+[11.06.22|01:13:29] Training epoch: 11
+[11.06.22|01:14:14] 	Iter 15000 Done. | loss: 0.0138 | lr: 0.001000
+[11.06.22|01:21:57] 	Iter 16000 Done. | loss: 0.0296 | lr: 0.001000
+[11.06.22|01:23:57] 	mean_loss: 0.021884846607587435
+[11.06.22|01:23:57] Time consumption:
+===> loss: 0.021884846607587435
+===> f1: [0.94487358 0.93136693 0.97326503 0.96105334 0.88910575 0.96011038
+ 0.98816791 0.95097914]
+===> acc: [0.99358856 0.9939345  0.99151292 0.9929428  0.98954105 0.98937961
+ 0.99260839 0.99258533]
+===> TP: [ 4765.  3569. 13397.  7551.  3636. 11084. 26768.  6237.]
+===> TN: [81399. 82625. 72587. 78557. 82177. 74715. 59311. 79840.]
+===> FN: [370. 383. 464. 321. 804. 627. 400. 455.]
+===> FP: [186. 143. 272. 291. 103. 294. 241. 188.]
+===> rec: [0.92794547 0.90308704 0.96652478 0.95922256 0.81891892 0.94646059
+ 0.9852768  0.93200837]
+===> prec: [0.96243183 0.96147629 0.98010096 0.96289212 0.97245253 0.97416066
+ 0.99107705 0.9707393 ]
+===> average f1: 0.9498652579645213
+===> average acc: 0.9920116466789668
+[11.06.22|01:24:03] Done.
+[11.06.22|01:24:03] Eval epoch: 11
+[11.06.22|01:27:38] 	mean_loss: 0.19937654934237023
+===> loss: 0.19937654934237023
+===> f1: [0.17103987 0.10480308 0.43723391 0.59526607 0.10483184 0.61568014
+ 0.84854905 0.34425244]
+===> acc: [0.91882342 0.96237151 0.78430158 0.96115547 0.97492199 0.92667034
+ 0.94465859 0.86818557]
+===> TP: [ 365.   96. 3652. 1245.   64. 2560. 6757. 1508.]
+===> TN: [39681. 41848. 30531. 40646. 42427. 37828. 34415. 36331.]
+===> FN: [ 997. 1191. 2050. 1208.  969. 2559. 2314. 3330.]
+===> FP: [2541.  449. 7351.  485.  124.  637.   98. 2415.]
+===> rec: [0.26798825 0.07459207 0.64047703 0.50754179 0.06195547 0.50009768
+ 0.74490133 0.31169905]
+===> prec: [0.1256022  0.17614679 0.33190948 0.71965318 0.34042553 0.8007507
+ 0.98570387 0.38439969]
+===> average f1: 0.40270705053488925
+===> average acc: 0.9176360591042585
+[11.06.22|01:27:41] Done.
+[11.06.22|01:27:41] Training epoch: 12
+[11.06.22|01:33:25] 	Iter 17000 Done. | loss: 0.0225 | lr: 0.001000
+[11.06.22|01:38:08] 	mean_loss: 0.01949615685399828
+[11.06.22|01:38:08] Time consumption:
+===> loss: 0.01949615685399828
+===> f1: [0.95528244 0.93886527 0.97675213 0.96509949 0.8942608  0.9633213
+ 0.9893198  0.95905582]
+===> acc: [0.99478782 0.99458026 0.99261993 0.99368081 0.99001384 0.9902214
+ 0.99332334 0.99379613]
+===> TP: [ 4828.  3609. 13445.  7577.  3662. 11136. 26818.  6301.]
+===> TN: [81440. 82641. 72635. 78595. 82192. 74736. 59323. 79881.]
+===> FN: [306. 340. 412. 292. 775. 577. 348. 392.]
+===> FP: [146. 130. 228. 256.  91. 271. 231. 146.]
+===> rec: [0.94039735 0.91390225 0.97026773 0.96289236 0.82533243 0.9507385
+ 0.98718987 0.94143135]
+===> prec: [0.97064737 0.96523135 0.9833248  0.96731776 0.97575273 0.97624266
+ 0.99145994 0.97735381]
+===> average f1: 0.9552446303096158
+===> average acc: 0.9928779404981549
+[11.06.22|01:38:14] Done.
+[11.06.22|01:38:14] Eval epoch: 12
+[11.06.22|01:41:48] 	mean_loss: 0.20931639305820543
+===> loss: 0.20931639305820543
+===> f1: [0.13620328 0.0814136  0.332577   0.6034225  0.12060278 0.61208439
+ 0.86666213 0.32960705]
+===> acc: [0.90425385 0.9606507  0.77714299 0.96278451 0.97590859 0.92281571
+ 0.94959159 0.81697412]
+===> TP: [ 329.   76. 2420. 1234.   72. 2654. 7140. 1961.]
+===> TN: [39082. 41793. 31451. 40728. 42462. 37566. 34247. 33646.]
+===> FN: [1033. 1211. 3282. 1219.  961. 2465. 1931. 2877.]
+===> FP: [3140.  504. 6431.  403.   89.  899.  266. 5100.]
+===> rec: [0.24155653 0.05905206 0.42441249 0.50305748 0.0696999  0.51846064
+ 0.7871238  0.40533278]
+===> prec: [0.09484001 0.13103448 0.27341543 0.75381796 0.44720497 0.74697439
+ 0.96408318 0.2777227 ]
+===> average f1: 0.38532159097946583
+===> average acc: 0.9087652578928047
+[11.06.22|01:41:50] Done.
+[11.06.22|01:41:50] Training epoch: 13
+[11.06.22|01:44:49] 	Iter 18000 Done. | loss: 0.0053 | lr: 0.001000
+[11.06.22|01:52:16] 	mean_loss: 0.017474440259281614
+[11.06.22|01:52:16] Time consumption:
+===> loss: 0.017474440259281614
+===> f1: [0.96084939 0.9460964  0.97750922 0.97349593 0.89889231 0.96841328
+ 0.99098218 0.96226079]
+===> acc: [0.99541052 0.99521448 0.99286208 0.99520295 0.99041744 0.99157057
+ 0.99436116 0.99425738]
+===> TP: [ 4884.  3642. 13452.  7640.  3694. 11206. 26870.  6349.]
+===> TN: [81438. 82663. 72649. 78664. 82195. 74783. 59361. 79873.]
+===> FN: [249. 309. 407. 232. 744. 506. 296. 346.]
+===> FP: [149. 106. 212. 184.  87. 225. 193. 152.]
+===> rec: [0.95149036 0.92179195 0.9706328  0.97052846 0.83235692 0.95679645
+ 0.98910403 0.94831964]
+===> prec: [0.97039539 0.97171825 0.98448478 0.97648262 0.97699021 0.98031668
+ 0.99286849 0.97661898]
+===> average f1: 0.9598124378139565
+===> average acc: 0.9936620733394834
+[11.06.22|01:52:22] Done.
+[11.06.22|01:52:22] Eval epoch: 13
+[11.06.22|01:55:56] 	mean_loss: 0.19961755853209673
+===> loss: 0.19961755853209673
+===> f1: [0.1251477  0.12336965 0.38324165 0.61452466 0.09807046 0.60466696
+ 0.8649479  0.37406215]
+===> acc: [0.91531296 0.95989354 0.78281021 0.96358756 0.97425661 0.92226505
+ 0.94986692 0.8372109 ]
+===> TP: [ 264.  123. 2941. 1265.   61. 2591. 6997. 2120.]
+===> TN: [39629. 41713. 31177. 40732. 42401. 37605. 34402. 34369.]
+===> FN: [1098. 1164. 2761. 1188.  972. 2528. 2074. 2718.]
+===> FP: [2593.  584. 6705.  399.  150.  860.  111. 4377.]
+===> rec: [0.1938326  0.0955711  0.51578394 0.51569507 0.05905131 0.50615355
+ 0.77135928 0.4381976 ]
+===> prec: [0.09240462 0.17397454 0.30489322 0.76021635 0.28909952 0.75079687
+ 0.98438379 0.32630445]
+===> average f1: 0.3985038910942481
+===> average acc: 0.913150468061674
+[11.06.22|01:55:58] Done.
+[11.06.22|01:55:58] Training epoch: 14
+[11.06.22|01:56:12] 	Iter 19000 Done. | loss: 0.0135 | lr: 0.001000
+[11.06.22|02:03:56] 	Iter 20000 Done. | loss: 0.0252 | lr: 0.001000
+[11.06.22|02:06:25] 	mean_loss: 0.015691953686897634
+[11.06.22|02:06:25] Time consumption:
+===> loss: 0.015691953686897634
+===> f1: [0.96803962 0.9542039  0.97901642 0.97485148 0.90415557 0.97278803
+ 0.99179386 0.97005847]
+===> acc: [0.99625231 0.9959179  0.99333487 0.99544511 0.99087869 0.99273524
+ 0.99486854 0.99543358]
+===> TP: [ 4922.  3688. 13484.  7656.  3731. 11261. 26893.  6415.]
+===> TN: [81473. 82678. 72658. 78669. 82198. 74829. 59382. 79909.]
+===> FN: [209. 261. 369. 213. 704. 449. 266. 276.]
+===> FP: [116.  93. 209. 182.  87. 181. 179. 120.]
+===> rec: [0.9592672  0.93390732 0.97336317 0.97293176 0.84126268 0.9616567
+ 0.99020582 0.95875056]
+===> prec: [0.97697499 0.97540333 0.98473673 0.97677979 0.9772132  0.98418109
+ 0.993388   0.98163734]
+===> average f1: 0.9643634181746095
+===> average acc: 0.9943582795202952
+[11.06.22|02:06:31] Done.
+[11.06.22|02:06:31] The model has been saved as ./work_dir/train/disfa/exp1/0/epoch15_model.pt.
+[11.06.22|02:06:31] Eval epoch: 14
+[11.06.22|02:10:05] 	mean_loss: 0.20840366326547222
+===> loss: 0.20840366326547222
+===> f1: [0.19319342 0.19974877 0.3590402  0.59483131 0.06808489 0.60260099
+ 0.86476094 0.31517956]
+===> acc: [0.91242199 0.95606186 0.77250826 0.96186674 0.9748761  0.91868576
+ 0.94972926 0.83987243]
+===> TP: [ 457.  239. 2777. 1220.   40. 2687. 7005. 1606.]
+===> TN: [39310. 41430. 30892. 40702. 42449. 37353. 34388. 34999.]
+===> FN: [ 905. 1048. 2925. 1233.  993. 2432. 2066. 3232.]
+===> FP: [2912.  867. 6990.  429.  102. 1112.  125. 3747.]
+===> rec: [0.33553598 0.18570319 0.4870221  0.49735018 0.03872217 0.52490721
+ 0.77224121 0.33195535]
+===> prec: [0.13564856 0.21609403 0.28432477 0.73984233 0.28169014 0.70729139
+ 0.98246844 0.30001868]
+===> average f1: 0.3996800103543272
+===> average acc: 0.9107527991923642
+[11.06.22|02:10:07] Done.
