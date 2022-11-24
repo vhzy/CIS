@@ -29,7 +29,7 @@ if __name__ == "__main__":
     parser.add_argument('-d',
                         '--data_dir',
                         type=str,
-                        default='/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1',
+                        default='/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random3',
                         help='data dir name')
     parser.add_argument('-k', '--kfold', type=int, default=3, help='kfold')
     parser.add_argument('--num_class',
@@ -71,7 +71,7 @@ if __name__ == "__main__":
                 'istrain':
                 False,
             },
-            'model': 'net.CISNet.Model',
+            'model': 'net.causal_net.CAUSAL_NET',
             'model_args': {
                 'num_class': args.num_class,
                 'backbone': 'resnet34',
@@ -85,13 +85,13 @@ if __name__ == "__main__":
             'log_interval': 1000,
             'save_interval': 5,
             'device': [0],
-            'batch_size': 64,
-            'test_batch_size': 64,
+            'batch_size': 4,
+            'test_batch_size': 4,
             'base_lr': 0.001,
             'lr_decay': 0.3,
             'step': [],
-            'num_epoch': 20,
-            'debug': False,
+            'num_epoch': 15,
+            'debug': True,
             'num_worker': 0,
             'optimizer': 'SGD',
             'weight_decay': 0.0005,

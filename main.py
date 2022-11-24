@@ -59,10 +59,17 @@ if __name__ == '__main__':
 
     # read arguments
     arg = parser.parse_args()
-    
+    #print(arg.processor)
+    # import sys
+    # sys.exit()
     # start
     #实例化REC_Processor类并传入命令行中参数（同时完成类初始化）
-    Processor = processors[arg.processor]
+    Processor = processors[arg.processor]#processor是train-image-casual
+    # print(sys.argv[0]),main.py
+    # print(sys.argv[1]),train-image-image-causal
+    # print(sys.argv[2]),-c
+    #print(sys.argv[2:]) ['-c', './config/exp1/train0.yaml']
+
     p = Processor(sys.argv[2:]) #第2个之后的参数是我们传入的参数，这里是yaml配置文件
     # pdb.set_trace()
     #调用REC_Processor类中开始函数

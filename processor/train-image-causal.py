@@ -72,6 +72,9 @@ class REC_Processor(Processor):
 
         update_dict = {}
         model_dict = self.model.state_dict()
+        # self.io.print_log(str(self.model.encoder))
+        # import sys
+        # sys.exit()   
         if self.arg.pretrain and self.arg.model_args['backbone'] in [
                 'resnet18'
         ]:
@@ -102,6 +105,9 @@ class REC_Processor(Processor):
                 'resnet34'
         ]:
             pretrained_dict = models.resnet34(weights='ResNet34_Weights.DEFAULT').state_dict()
+            # self.io.print_log(str(pretrained_dict.keys()))
+            # import sys
+            # sys.exit()
             for k, v in pretrained_dict.items():
                 if "layer1" in k:
                     update_dict[k.replace("layer1", "encoder.4", 1)] = v
@@ -173,6 +179,9 @@ class REC_Processor(Processor):
                 if "features" in k:
                     update_dict[k.replace("features", "encoder", 1)] = v
 
+        # self.io.print_log(str(update_dict.keys()))
+        # import sys
+        # sys.exit()            
         print('updated params:{}'.format(len(update_dict)))
         model_dict.update(update_dict)
         self.model.load_state_dict(model_dict)
@@ -394,7 +403,7 @@ class REC_Processor(Processor):
         parser.add_argument('--loss', type=str, default='Focal', help='loss for optimizer')
         parser.add_argument('--loss_weight', type=int, default=[], nargs='+', help='weights for BCE loss')
         parser.add_argument('--resume', default='', type=str, metavar='PATH', help='path to latest checkpoint (default: none)')
-        parser.add_argument('--backbone_only', type=str2bool, default=True, help='only use backbone weights')
+        #parser.add_argument('--backbone_only', type=str2bool, default=True, help='only use backbone weights')
         parser.add_argument('--pretrain', type=str2bool, default=True, help='load pretrained weights on ImageNet or not')
         parser.add_argument('--clf_only_epoch', type=int, default=1, help='clf only epoch')
         # endregion yapf: enable

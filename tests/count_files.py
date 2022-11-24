@@ -1,5 +1,5 @@
 import os
-path = '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/image'      # 输入文件夹地址
+path = '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/new_image'      # 输入文件夹地址
 files = os.listdir(path)   # 读入文件夹
 files.sort(key=lambda x:int(x[2:]))
 for file in files:

@@ -5,7 +5,7 @@ import pickle
 import random
 #You nead downloading DISFA including 'ActionUnit_Labels'
 label_path = '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/ActionUnit_Labels'
-list_path_prefix = '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random2/'
+list_path_prefix = '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random3/'
 image_path = '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/image/'
 
 all = ['SN002','SN010','SN001','SN026','SN027','SN032','SN030','SN009','SN016','SN013','SN018','SN011','SN028','SN012','SN006','SN031','SN021','SN024','SN003','SN029','SN023','SN025','SN008','SN005','SN007','SN017','SN004']
@@ -16,9 +16,9 @@ part3 = all[18:]
 print(part1)
 print(part2)
 print(part3)
-part1 = ['SN002','SN010','SN001','SN026','SN027','SN032','SN030','SN009','SN016']
-part2 = ['SN013','SN018','SN011','SN028','SN012','SN006','SN031','SN021','SN024']
-part3 = ['SN003','SN029','SN023','SN025','SN008','SN005','SN007','SN017','SN004']
+# part1 = ['SN002','SN010','SN001','SN026','SN027','SN032','SN030','SN009','SN016']
+# part2 = ['SN013','SN018','SN011','SN028','SN012','SN006','SN031','SN021','SN024']
+# part3 = ['SN003','SN029','SN023','SN025','SN008','SN005','SN007','SN017','SN004']
 
 # fold1:  train : part1+part2 test: part3
 # fold2:  train : part1+part3 test: part2

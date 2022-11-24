@@ -8,6 +8,7 @@ import numpy as np
 class SubjectAttentionLayer(nn.Module):
     def __init__(self, input_channel, d_model, output_channel):
         super(SubjectAttentionLayer, self).__init__()
+
         
         self.input_channel = input_channel
         self.d_model = d_model
@@ -40,5 +41,5 @@ class SubjectAttentionLayer(nn.Module):
 
         subject_embedding, _ = self.attention(Q_subject, K_subject, V_subject)
         x = self.xmap(x) + self.smap(subject_embedding)
-
+        #x = self.xmap(x)
         return x

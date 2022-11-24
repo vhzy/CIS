@@ -125,8 +125,8 @@ class Model(nn.Module):
 
         elif self.backbone == 'resnet34':
             self.encoder = nn.Sequential(
-                *list(models.resnet34(pretrained=False).children())
-                [:-1],  # [N, 512, image_size // (2^4), _]
+                *list(models.resnet34(pretrained=True).children())
+                [:-2],  # [N, 512, image_size // (2^4), _]    #注意这里倒数第二次是[bn,512,8,8]，之后是一个平均池化[bn,512,1,1]
             )
             self.output_channel = 512
             self.output_size = 16
@@ -200,16 +200,23 @@ class Model(nn.Module):
         '''
         image for cnn: [N, C, H, W] if single
                         [N, T, C, H, W] if sequential model (time_model is set)
+        image[bn,3,16,16]
         '''
         N, T, C, H, W = image.shape
         x = image.view(-1, image.shape[2], image.shape[3], image.shape[4])
-
-        x = self.encoder(x)#经过resnet50的输出
+        #print(x.shape)
+        #print(self.encoder)
+        x = self.encoder(x)#经过resnet50的输出[4,512,1,1]（倒数第二层，带池化），倒数第三层[-2]，应该是[4,512,8,8]
+        # print(x.shape)
+        # import sys
+        # sys.exit()
         if self.pooling == False:
             x = x.view(x.shape[0], -1)
         else:
-            x = self.avgpool(x)#池化
-            x = x.view(x.shape[0], -1)
+            x = self.avgpool(x)#池化[4,512,1,1]
+  
+            x = x.view(x.shape[0], -1)#[4,512]
+
 
         if self.subject:
             x = self.projector(x)

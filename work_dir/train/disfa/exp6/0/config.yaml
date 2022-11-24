@@ -1,10 +1,11 @@
-# command line: main.py train-image-causal -c ./config/exp1/train2.yaml
+# command line: main.py train-image-causal -c ./config/exp6/train0.yaml
 
+backbone_only: true
 base_lr: 0.001
 batch_size: 4
 clf_only_epoch: 1
-config: ./config/exp1/train2.yaml
-debug: true
+config: ./config/exp6/train0.yaml
+debug: false
 device:
 - 0
 eval_interval: 1
@@ -13,14 +14,14 @@ ignore_weights: []
 log_interval: 1000
 loss: clf
 loss_weight:
-- 0.051906303648995865
-- 0.05309306264474427
-- 0.1530458227235543
-- 0.08511251166595615
-- 0.04454378910255671
-- 0.13273265661186068
-- 0.27112258183452204
-- 0.07982394487907732
+- 0.03793475268422502
+- 0.02297650729558594
+- 0.13503716619253006
+- 0.0678856566027347
+- 0.028734972928328897
+- 0.12262549325502432
+- 0.27594750848857486
+- 0.10352619987152427
 lr_decay: 0.3
 model: net.CISNet.Model
 model_args:
@@ -49,16 +50,16 @@ start_epoch: 0
 step: []
 test_batch_size: 4
 test_feeder_args:
-    image_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test2_imagepath.pkl
+    image_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random2.1/test0_imagepath.pkl
     image_size: 256
     istrain: false
-    label_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/test2_label.pkl
+    label_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random2.1/test0_label.pkl
 train_feeder_args:
-    image_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train2_imagepath.pkl
+    image_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random2.1/train0_imagepath.pkl
     image_size: 256
     istrain: true
-    label_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random1/train2_label.pkl
+    label_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random2.1/train0_label.pkl
 use_gpu: true
 weight_decay: 0.0005
 weights: null
-work_dir: ./work_dir/train/disfa/exp1/2
+work_dir: ./work_dir/train/disfa/exp6/0
