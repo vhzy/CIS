@@ -14,7 +14,7 @@ if __name__ == "__main__":
     parser.add_argument('-p',
                         '--processor_name',
                         type=str,
-                        default='train-image-causal',
+                        default='train-causal-net',
                         help='processor name')
     parser.add_argument('-c',
                         '--config_dir',
@@ -46,6 +46,8 @@ if __name__ == "__main__":
 
         label_freq = compute_label_frequency(
             os.path.join(args.data_dir, 'train' + str(k) + '_label.pkl'))
+        
+        label_class_freq = compute_class_frequency(os.path.join(args.data_dir, 'train' + str(k) + '_label.pkl'))
 
         desired_caps = {
             'work_dir': os.path.join(args.work_dir, str(k)),
@@ -90,8 +92,8 @@ if __name__ == "__main__":
             'base_lr': 0.001,
             'lr_decay': 0.3,
             'step': [],
-            'num_epoch': 15,
-            'debug': True,
+            'num_epoch': 20,
+            'debug': False,
             'num_worker': 0,
             'optimizer': 'SGD',
             'weight_decay': 0.0005,
@@ -99,6 +101,7 @@ if __name__ == "__main__":
             'loss_weight': label_freq.tolist(),
             'pretrain': True,
             'seed': 42,
+            'loss_class_weight': label_class_freq.tolist(),
         }
 
         yamlpath = os.path.join(args.config_dir, 'train' + str(k) + '.yaml')

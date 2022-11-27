@@ -84,7 +84,7 @@ def compute_frequency(args, infodir):
 
     return subject_labelcnt, subject_names
 
-
+#计算所有AU里面 positive的ratio
 def compute_label_frequency(label_path):
     # load label
     with open(label_path, 'rb') as f:

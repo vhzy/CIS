@@ -1,10 +1,11 @@
-# command line: main.py train-image-causal -c ./config/exp1/train1.yaml
+# command line: main.py train-causal-net -c ./config/exp1/train1.yaml
 
 base_lr: 0.001
 batch_size: 4
+branch_loss_weight: 0.33
 clf_only_epoch: 1
 config: ./config/exp1/train1.yaml
-debug: true
+debug: false
 device:
 - 0
 eval_interval: 1

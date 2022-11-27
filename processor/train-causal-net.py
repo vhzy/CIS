@@ -49,14 +49,13 @@ class REC_Processor(Processor):
     """
 
     def init_environment(self):
-
         super().init_environment()
         self.best_f1 = np.zeros(self.arg.model_args['num_class'])
         self.best_acc = np.zeros(self.arg.model_args['num_class'])
         self.best_aver_f1 = 0
         self.best_aver_acc = 0
-        self.subject_prototype = dict()
-        self.subject_prototype_update = dict()
+        # self.subject_prototype = dict()
+        # self.subject_prototype_update = dict()
 
     def load_model(self):
 
@@ -187,9 +186,10 @@ class REC_Processor(Processor):
         self.model.load_state_dict(model_dict)
 
         if self.arg.loss == 'clf':
+            class_weight = np.array(self.arg.class_loss_weight)  #类间的标签权重
             weight = np.array(self.arg.loss_weight)
             weight = torch.from_numpy(weight).float()
-            self.loss = losses.CLFLoss(weight=weight)
+            self.loss = losses.CLFLoss(weight=weight,class_weight = class_weight)
         else:
             raise ValueError()
 
@@ -228,6 +228,7 @@ class REC_Processor(Processor):
         self.adjust_lr()
         loader = self.data_loader['train']
         loss_value = []
+        branch_result_frag = []
         result_frag = []
         label_frag = []
 
@@ -240,33 +241,40 @@ class REC_Processor(Processor):
             image = image.float().to(self.dev)
 
             # forward 对于大于0epoch时，已经计算出来了字典，可以进行注意力
-            if self.meta_info['epoch'] >= self.arg.clf_only_epoch:
-                feature, output = self.model(
-                    image, subject_infos=[self.K_subject, self.V_subject])
-            else:
-                feature, output = self.model(image)
+            # if self.meta_info['epoch'] >= self.arg.clf_only_epoch:
+            #     feature, output = self.model(
+            #         image, subject_infos=[self.K_subject, self.V_subject])
+            # else:
+            #     feature, output = self.model(image)
+            output, branch_output = self.model(image)
 
             # collect subject feature，这里是创建每个人的混淆字典特征
-            for sidx, sub_id in enumerate(subject_id):
-                if sub_id not in self.subject_prototype_update:
-                    self.subject_prototype_update[sub_id] = []
-                    self.subject_prototype_update[sub_id].append(
-                        feature[sidx].squeeze().data.cpu().numpy())
-                else:
-                    self.subject_prototype_update[sub_id].append(
-                        feature[sidx].squeeze().data.cpu().numpy())
+            # for sidx, sub_id in enumerate(subject_id):
+            #     if sub_id not in self.subject_prototype_update:
+            #         self.subject_prototype_update[sub_id] = []
+            #         self.subject_prototype_update[sub_id].append(
+            #             feature[sidx].squeeze().data.cpu().numpy())
+            #     else:
+            #         self.subject_prototype_update[sub_id].append(
+            #             feature[sidx].squeeze().data.cpu().numpy())
 
             result_frag.append(output.data.cpu().numpy())
+            branch_result_frag.append(branch_output.data.cpu().numpy())
             label_frag.append(label.data.cpu().numpy())
 
-            if self.meta_info['epoch'] > 0 or self.arg.clf_only_epoch > 1:
-                loss = self.loss(output, label)
-                # backward，大于0时进行梯度回传，否则第一轮式停止反向传播来初始化词典
-                self.optimizer.zero_grad()
-                loss.backward()
-                self.optimizer.step()
-            else:
-                loss = torch.tensor(0)
+            # if self.meta_info['epoch'] > 0 or self.arg.clf_only_epoch > 1:
+            #     loss = self.loss(output, label)
+            #     # backward，大于0时进行梯度回传，否则第一轮式停止反向传播来初始化词典
+            #     self.optimizer.zero_grad()
+            #     loss.backward()
+            #     self.optimizer.step()
+            # else:
+            #     loss = torch.tensor(0)
+            loss = self.loss(output, label) + self.arg.branch_loss_weight * self.loss(branch_output, label) #加上分支
+            # backward，大于0时进行梯度回传，否则第一轮式停止反向传播来初始化词典
+            self.optimizer.zero_grad()
+            loss.backward()
+            self.optimizer.step()
 
             # statistics
             self.iter_info['loss'] = loss.data.item()
@@ -280,6 +288,7 @@ class REC_Processor(Processor):
         self.io.print_timer()
 
         # update subject_prototype
+        '''
         for k, v in self.subject_prototype_update.items():
             self.subject_prototype[k] = np.stack(
                 self.subject_prototype_update[k])
@@ -306,6 +315,7 @@ class REC_Processor(Processor):
             self.V_subject[idx] = self.P_subject[idx] * self.K_subject[idx]
 
         self.subject_prototype_update = dict()
+        '''
 
         # visualize loss and metrics
         self.result = np.concatenate(result_frag)
@@ -322,9 +332,9 @@ class REC_Processor(Processor):
 
         state = {
             'model': self.model.state_dict(),
-            'K_subject': self.K_subject,
-            'V_subject': self.V_subject,
-            'P_subject': self.P_subject
+            # 'K_subject': self.K_subject,
+            # 'V_subject': self.V_subject,
+            # 'P_subject': self.P_subject
         }
         torch.save(state, os.path.join(self.arg.work_dir, 'final_model.pt'))
 
@@ -346,11 +356,12 @@ class REC_Processor(Processor):
 
             # inference
             with torch.no_grad():
-                if self.meta_info['epoch'] >= self.arg.clf_only_epoch:
-                    _, output = self.model(
-                        image, subject_infos=[self.K_subject, self.V_subject])
-                else:
-                    _, output = self.model(image)
+                # if self.meta_info['epoch'] >= self.arg.clf_only_epoch:
+                #     _, output = self.model(
+                #         image, subject_infos=[self.K_subject, self.V_subject])
+                # else:
+                #     _, output = self.model(image)
+                _, output = self.model(image)
             result_frag.append(output.data.cpu().numpy())
 
             # get loss
@@ -368,8 +379,8 @@ class REC_Processor(Processor):
             f1_score, accuracy, val_f1, val_acc = funcs.record_metrics(
                 self.result, self.label, self.epoch_info['mean_loss'],
                 self.arg.model_args['num_class'], self.arg.work_dir, 'val')
-            if self.best_aver_f1 < val_f1 and self.meta_info[
-                    'epoch'] >= self.arg.clf_only_epoch:
+            if self.best_aver_f1 < val_f1 :
+            # and self.meta_info['epoch'] >= self.arg.clf_only_epoch:
                 self.best_aver_f1 = val_f1
                 self.best_f1 = f1_score
                 self.best_aver_acc = val_acc
@@ -390,7 +401,7 @@ class REC_Processor(Processor):
         parent_parser = Processor.get_parser(add_help=False)
         parser = argparse.ArgumentParser(add_help=add_help,
                                          parents=[parent_parser],
-                                         description='CISNet')
+                                         description='causal-net')
 
         # region arguments yapf: disable
         # optim
@@ -406,6 +417,7 @@ class REC_Processor(Processor):
         #parser.add_argument('--backbone_only', type=str2bool, default=True, help='only use backbone weights')
         parser.add_argument('--pretrain', type=str2bool, default=True, help='load pretrained weights on ImageNet or not')
         parser.add_argument('--clf_only_epoch', type=int, default=1, help='clf only epoch')
+        parser.add_argument('--branch_loss_weight', type=float, default=0.33, help='weight of branch loss')
         # endregion yapf: enable
 
         return parser

@@ -126,10 +126,10 @@ class Model(nn.Module):
         elif self.backbone == 'resnet34':
             self.encoder = nn.Sequential(
                 *list(models.resnet34(pretrained=True).children())
-                [:-2],  # [N, 512, image_size // (2^4), _]    #注意这里倒数第二次是[bn,512,8,8]，之后是一个平均池化[bn,512,1,1]
+                [:-2],  # [N, 512, image_size // (2^4), _]    #注意这里倒数第二次是[bn,512,8,8]，之后是一个平均池化[bn,512,1,1],output_size = 8
             )
             self.output_channel = 512
-            self.output_size = 16
+            self.output_size = 8
 
         elif self.backbone == 'resnet50':
             self.encoder = nn.Sequential(

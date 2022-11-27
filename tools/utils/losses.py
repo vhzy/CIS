@@ -17,12 +17,14 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 class CLFLoss(nn.Module):
     def __init__(self,
                  weights=None,
+                 class_weights = None,
                  lambda_clf=1,
                  size_average=True,
                  **kwargs):
         super(CLFLoss, self).__init__()
         self.size_average = size_average
         self.weights = weights
+        self.class_weights = class_weights
         self.lambda_clf = lambda_clf
 
     def forward(self, outputs, targets, *args):
@@ -40,7 +42,7 @@ class CLFLoss(nn.Module):
                     -(target * torch.log((output + 0.05) / 1.05) +
                       (1.0 - target) * torch.log((1.05 - output) / 1.05)))
             else:
-                loss_au = torch.sum(-(
+                loss_au = torch.sum(-(1 - self.class_weights[i]) * (
                     (1.0 - self.weights[i]) * target * torch.log(
                         (output + 0.05) / 1.05) + self.weights[i] *
                     (1.0 - target) * torch.log((1.05 - output) / 1.05)))

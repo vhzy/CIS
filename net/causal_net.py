@@ -6,6 +6,7 @@ from torch.autograd import Variable
 # time model
 from net.utils.subject_attention import SubjectAttentionLayer
 from net.utils.attention_branch import AttentionBranchLayer
+from net.utils.au_embedding import AU_Embedding
 # pre-trained backbone
 import torchvision.models as models
 
@@ -72,6 +73,7 @@ class CAUSAL_NET(nn.Module):
                  **kwargs):
         super().__init__()
         assert d_in == d_out
+        self.num_class = num_class
         self.in_channel = in_channel
         self.mid_channel = mid_channel
 
@@ -126,13 +128,17 @@ class CAUSAL_NET(nn.Module):
             self.output_channel = 512
             self.output_size = 16
 
+
+        #注意这里children()下一行要改成[:-2]
+
+
         elif self.backbone == 'resnet34':
             self.encoder = nn.Sequential(
                 *list(models.resnet34(pretrained=False).children())
-                [:-1],  # [N, 512, image_size // (2^4), _]
+                [:-2],  # [N, 512, image_size // (2^4), _]
             )
             self.output_channel = 512
-            self.output_size = 16
+            self.output_size = 8
 
         elif self.backbone == 'resnet50':
             self.encoder = nn.Sequential(
@@ -156,6 +162,8 @@ class CAUSAL_NET(nn.Module):
             )
         #首先计算branch attention的两个输出，in_channel是resnet34最后一层的通道数，mid_channel=64，是中间的过度通道数
         self.branch_attention_net= AttentionBranchLayer(self.in_channel,  self.mid_channel, num_class)
+        #下面的Output_size是指resnet的feature_map中的高和宽=output_size
+        self.au_embedding = AU_Embedding(self.in_channel, self.mid_channel, self.output_size)
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         
 
@@ -211,12 +219,31 @@ class CAUSAL_NET(nn.Module):
 
         x = self.encoder(x)#经过resnet50的输出
         branch_attention, branch_output = self.branch_attention_net(x)
-        print(branch_attention.shape)
-        print(branch_output.shape)
-        import sys
-        sys.exit()
+        # print(branch_attention.shape) [4,8,8,8]
+        # print(branch_output.shape) [4,8] 这里测试正确，没有问题
+        # import sys
+        # sys.exit()
+
+        #接下来应该用branch_attention和x做哈达玛积，得到dim[4,8,512,8,8]
+        for i in range(self.num_class):
+            attention_map1 = branch_attention[:,i,:,:].unsqueeze(1) #[4,1,8,8] x:[4,512,8,8]
+            attention_out = attention_map1 * x #[4,512,8,8]
+            attention_out = attention_out + x
+            #已经得到了某一个AU的表征，继续对其embedding，之后得到这个AU的预测结果[4,1],8个AU就是[4,8]
+            au_predict = self.au_embedding(attention_out) #shape[4,1]
+            # print(au_predict.shape)  【4，1】
+            # import sys
+            # sys.exit()
+            if i == 0:
+                all_au_predict = au_predict
+            else:
+                all_au_predict = torch.cat([all_au_predict,au_predict],dim = -1) #最后的维度是[4,8]
 
 
+
+
+#以下代码都不要了，但是暂时保存着
+        '''
         if self.pooling == False:
             x = x.view(x.shape[0], -1)
         else:
@@ -233,7 +260,7 @@ class CAUSAL_NET(nn.Module):
                 x = self.subject_attention(x, subject_infos)
         else:
             feature = x
-
+        '''
         if self.temporal_model == 'single':
             pass
         elif self.temporal_model == 'lstm':
@@ -246,6 +273,10 @@ class CAUSAL_NET(nn.Module):
             x, _ = self.lstm(x, (h0, c0))  # [N, T, self.hidden_size]
             x = x[:, -1, :]  # N x self.hidden_size
 
-        output = self.final(x)
+        #output = self.final(x)
+        '''
+        之前返回的是feature，output，feature是为了在之后为每个subject构建字典，这里我不需要构建字典，所以feature删掉
+        增加了一个输出brabch_output，这是branch attention的输出，也用来计算loss
+        '''
 
-        return feature, output, branch_output
+        return all_au_predict, branch_output

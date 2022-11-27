@@ -27,6 +27,7 @@ if __name__ == '__main__':
     # processors['test-image-contrast'] = import_class('processor.test-image-contrast.REC_Processor')
     # processors['quant-image'] = import_class('processor.quant-image.REC_Processor')
     processors['train-image-causal'] = import_class('processor.train-image-causal.REC_Processor')
+    processors['train-causal-net'] = import_class('processor.train-causal-net.REC_Processor')
     # processors['train-image-causal-woP'] = import_class('processor.train-image-causal-woP.REC_Processor')
     # processors['train-image-contrast'] = import_class('processor.train-image-contrast.REC_Processor')
     # processors['train-image-contrast-proto-sep'] = import_class('processor.train-image-contrast-proto-sep.REC_Processor')

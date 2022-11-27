@@ -26,22 +26,23 @@ class AttentionBranchLayer(nn.Module):
         self.relu1 = nn.ReLU()
         self.conv_att = nn.Conv2d(self.au_num,self.au_num,kernel_size=1)
         self.sigmoid1 = nn.Sigmoid()
-        self.conv_output = nn.Conv2d(self.au_num,self,au_num,kernel_size=1)
+        self.conv_output = nn.Conv2d(self.au_num,self.au_num,kernel_size=1)
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.sigmoid2 = nn.Sigmoid()
 
    
 
     def forward(self, x):
-
+        #print(x.shape) [4,512,8,8]
         x_conv1 = self.conv1(x)
         x_conv2 = self.conv2(x_conv1)
         x_conv2_relu = self.relu1(x_conv2)
 
+
         #attention_branch
         x_att = self.conv_att(x_conv2_relu)
-        x_att_relu = self.sigmoid1(x_att)
-        attention = self.sigmoid1(x_att_relu)
+        #x_att_relu = self.sigmoid1(x_att)
+        attention = self.sigmoid1(x_att)
 
         #predict branch
         x_conv_output = self.conv_output(x_conv2_relu)

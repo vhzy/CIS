@@ -22,7 +22,7 @@ loss_weight:
 - 0.27112258183452204
 - 0.07982394487907732
 lr_decay: 0.3
-model: net.CISNet.Model
+model: net.causal_net.CAUSAL_NET
 model_args:
     backbone: resnet34
     d_in: 512
