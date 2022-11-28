@@ -190,7 +190,7 @@ class REC_Processor(Processor):
             class_weight = torch.from_numpy(class_weight).float()
             weight = np.array(self.arg.loss_weight)
             weight = torch.from_numpy(weight).float()
-            self.loss = losses.CLFLoss(weights=weight,class_weights = class_weight)
+            self.loss = losses.CLFLoss(weight=weight,class_weight = class_weight)
         else:
             raise ValueError()
 
@@ -232,10 +232,24 @@ class REC_Processor(Processor):
         branch_result_frag = []
         result_frag = []
         label_frag = []
+        subject_ID = []
 
         print('training dataloder length: ', len(loader))
 
         for image, label, subject_id in loader:
+            subject_map = {
+            'SN001': 0,'SN002': 1,'SN003': 2,'SN004': 3,'SN005': 4,'SN006': 5,'SN007': 6,
+            'SN008': 7,'SN009': 8,'SN010': 9,'SN011': 10,'SN012': 11,'SN013': 12,'SN016': 13,'SN017': 14, 'SN018': 15,
+            'SN021': 16,'SN023': 17,'SN024': 18,'SN025': 19,'SN026': 20,'SN027': 21,'SN028': 22,'SN029': 23,
+            'SN030': 24,'SN031': 25,'SN032': 26,}
+
+            # print(subject_id)
+            for i in range(len(subject_id)):
+                subject_ID.append(subject_map[subject_id[i]])
+            # print(subject_id)
+            # print(subject_ID)
+            # import sys
+            # sys.exit()
 
             # get data
             label = label.float().to(self.dev)
@@ -271,7 +285,11 @@ class REC_Processor(Processor):
             #     self.optimizer.step()
             # else:
             #     loss = torch.tensor(0)
-            loss = self.loss(output, label) + self.arg.branch_loss_weight * self.loss(branch_output, label) #加上分支
+            loss = self.loss(output, label, subject_ID) + self.arg.branch_loss_weight * self.loss(branch_output, label) #加上分支
+            # loss = self.arg.branch_loss_weight * self.loss(branch_output, label)
+            # print(type(loss))
+            # import sys
+            # sys.exit()
             # backward，大于0时进行梯度回传，否则第一轮式停止反向传播来初始化词典
             self.optimizer.zero_grad()
             loss.backward()
@@ -419,7 +437,6 @@ class REC_Processor(Processor):
         parser.add_argument('--pretrain', type=str2bool, default=True, help='load pretrained weights on ImageNet or not')
         parser.add_argument('--clf_only_epoch', type=int, default=1, help='clf only epoch')
         parser.add_argument('--branch_loss_weight', type=float, default=0.33, help='weight of branch loss')
-        parser.add_argument('--loss_class_weight', type=float, default=[], nargs='+', help='class weights for BCE loss')
         # endregion yapf: enable
 
         return parser
