@@ -106,6 +106,13 @@ def compute_class_frequency(label_path):
 
     return all_labelcnt / all_labelcnt.sum()
 
+def compute_AU_inner_frequency(label_path):
+    au_idx = [1, 2, 4, 6, 9, 12, 25, 26]
+    files = os.listdir(label_path)
+    files.sort(key=lambda x:int(x[2:]))  #SN001
+    
+    pass
+
 
 def split_data_random(args, infodir, kfold, splits_index):
 

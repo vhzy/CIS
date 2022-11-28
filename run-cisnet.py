@@ -4,7 +4,7 @@ import os
 import argparse
 from ruamel import yaml
 from torch.autograd.grad_mode import F
-from au_lib.data_utils import compute_label_frequency
+from au_lib.data_utils import compute_label_frequency,compute_class_frequency
 
 #os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,3'
 

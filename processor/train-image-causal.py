@@ -406,6 +406,7 @@ class REC_Processor(Processor):
         #parser.add_argument('--backbone_only', type=str2bool, default=True, help='only use backbone weights')
         parser.add_argument('--pretrain', type=str2bool, default=True, help='load pretrained weights on ImageNet or not')
         parser.add_argument('--clf_only_epoch', type=int, default=1, help='clf only epoch')
+        parser.add_argument('--loss_class_weight', type=float, default=[], nargs='+', help='class weights for BCE loss')
         # endregion yapf: enable
 
         return parser

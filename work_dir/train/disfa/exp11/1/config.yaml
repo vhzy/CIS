@@ -1,0 +1,74 @@
+# command line: main.py train-causal-net -c ./config/exp11/train1.yaml
+
+base_lr: 0.001
+batch_size: 4
+branch_loss_weight: 0.33
+clf_only_epoch: 1
+config: ./config/exp11/train1.yaml
+debug: false
+device:
+- 0
+eval_interval: 1
+feeder: feeder.feeder_image_causal.Feeder
+ignore_weights: []
+log_interval: 1000
+loss: clf
+loss_class_weight:
+- 0.06761407943209014
+- 0.058632929091935786
+- 0.1738820619000242
+- 0.0910080937911748
+- 0.056280082820188766
+- 0.14317405684476592
+- 0.3097824625561322
+- 0.09962623356368819
+loss_weight:
+- 0.05796583600359621
+- 0.0502662578667097
+- 0.14906982641370248
+- 0.0780216233661449
+- 0.04824915281587865
+- 0.12274372392171327
+- 0.2655778141497038
+- 0.08540999100947463
+lr_decay: 0.3
+model: net.causal_net.CAUSAL_NET
+model_args:
+    backbone: resnet34
+    d_in: 512
+    d_m: 256
+    d_out: 512
+    num_class: 8
+    pooling: true
+    subject: true
+    temporal_model: single
+nesterov: true
+num_epoch: 20
+num_worker: 0
+optimizer: SGD
+pavi_log: false
+phase: train
+pretrain: true
+print_log: true
+resume: ''
+save_interval: 5
+save_log: true
+save_result: false
+seed: 42
+start_epoch: 0
+step: []
+test_batch_size: 4
+test_feeder_args:
+    image_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random2.1/test1_imagepath.pkl
+    image_size: 256
+    istrain: false
+    label_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random2.1/test1_label.pkl
+train_feeder_args:
+    image_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random2.1/train1_imagepath.pkl
+    image_size: 256
+    istrain: true
+    label_path: /home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random2.1/train1_label.pkl
+use_gpu: true
+weight_decay: 0.0005
+weights: null
+work_dir: ./work_dir/train/disfa/exp11/1

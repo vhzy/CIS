@@ -186,10 +186,11 @@ class REC_Processor(Processor):
         self.model.load_state_dict(model_dict)
 
         if self.arg.loss == 'clf':
-            class_weight = np.array(self.arg.class_loss_weight)  #类间的标签权重
+            class_weight = np.array(self.arg.loss_class_weight)  #类间的标签权重
+            class_weight = torch.from_numpy(class_weight).float()
             weight = np.array(self.arg.loss_weight)
             weight = torch.from_numpy(weight).float()
-            self.loss = losses.CLFLoss(weight=weight,class_weight = class_weight)
+            self.loss = losses.CLFLoss(weights=weight,class_weights = class_weight)
         else:
             raise ValueError()
 
@@ -418,6 +419,7 @@ class REC_Processor(Processor):
         parser.add_argument('--pretrain', type=str2bool, default=True, help='load pretrained weights on ImageNet or not')
         parser.add_argument('--clf_only_epoch', type=int, default=1, help='clf only epoch')
         parser.add_argument('--branch_loss_weight', type=float, default=0.33, help='weight of branch loss')
+        parser.add_argument('--loss_class_weight', type=float, default=[], nargs='+', help='class weights for BCE loss')
         # endregion yapf: enable
 
         return parser
