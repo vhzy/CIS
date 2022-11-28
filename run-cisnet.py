@@ -4,7 +4,7 @@ import os
 import argparse
 from ruamel import yaml
 from torch.autograd.grad_mode import F
-from au_lib.data_utils import compute_label_frequency
+from au_lib.data_utils import compute_label_frequency,compute_class_frequency,compute_AU_inner_frequency
 
 #os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,3'
 
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     parser.add_argument('-d',
                         '--data_dir',
                         type=str,
-                        default='/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random3',
+                        default='/home/hfutzny/sda/casual_face/CIS/data/DISFA/list_random2',
                         help='data dir name')
     parser.add_argument('-k', '--kfold', type=int, default=3, help='kfold')
     parser.add_argument('--num_class',
@@ -48,6 +48,8 @@ if __name__ == "__main__":
             os.path.join(args.data_dir, 'train' + str(k) + '_label.pkl'))
         
         label_class_freq = compute_class_frequency(os.path.join(args.data_dir, 'train' + str(k) + '_label.pkl'))
+
+        label_inner_freq = compute_AU_inner_frequency('/home/hfutzny/sda/casual_face/CIS/data/ActionUnit_Labels')
 
         desired_caps = {
             'work_dir': os.path.join(args.work_dir, str(k)),
@@ -102,6 +104,7 @@ if __name__ == "__main__":
             'pretrain': True,
             'seed': 42,
             'loss_class_weight': label_class_freq.tolist(),
+            'loss_inner_weight': label_inner_freq.tolist(),
         }
 
         yamlpath = os.path.join(args.config_dir, 'train' + str(k) + '.yaml')

@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES="1" python run-cisnet.py -c './config/exp10' -w './work_dir/train/disfa/exp10' -d '/home/hfut1609/Disk_sda/hzy/faceAU/CIS/data/DISFA/list_random2.1'
+CUDA_VISIBLE_DEVICES="7" python run-cisnet.py -c './config/exp12' -w './work_dir/train/disfa/exp12' -d '/home/hfutzny/sda/casual_face/CIS/data/DISFA/list_random2'

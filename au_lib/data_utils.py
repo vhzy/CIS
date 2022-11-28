@@ -106,6 +106,66 @@ def compute_class_frequency(label_path):
 
     return all_labelcnt / all_labelcnt.sum()
 
+def compute_AU_inner_frequency(label_path):
+    # au_list = [] #au_list存储所有的au1...au26,每个au26里面有每个受试者的权重
+    # au_list_part = []
+
+    # au_idx = [1, 2, 4, 6, 9, 12, 25, 26]
+    # files_list = os.listdir(label_path)
+    # files_list.sort(key=lambda x:int(x[2:]))  #SN001
+    # for files in files_list:
+    #     SN_path = os.path.join(label_path, files)
+    #     file = os.listdir(SN_path)
+    #     file.sort(key=lambda x:int(x.split('.')[0][8:]))
+    #     for i in file:
+    #         if i.split('.')[0][8:] in au_idx:
+    #             with open(os.path.join(SN_path,i), 'rb') as f:
+    #                 for lines in f.readlines():
+    #                     frameIdx, AUIntensity = lines.split(',')#获得帧的编号和AU强度，上面的t和frameIdx是一样的
+    #                     frameIdx, AUIntensity = int(frameIdx), int(AUIntensity)
+    #                     if AUIntensity >= 2:#AU强度大于1表示存在AU
+    #                         AUIntensity = 1
+    #                     else:
+    #                         AUIntensity = 0
+
+    au_idx = [1, 2, 4, 6, 9, 12, 25, 26]
+    au_files = os.listdir(label_path)
+    au_files.sort(key=lambda x:int(x[2:]))  
+    au_all = []
+    au_res = []
+    for au_file in au_files:
+        count = [0,0,0,0,0,0,0,0]
+        for ai, au in enumerate(au_idx): #得到每个subject的标签SN001_au1.txt
+            l_path = os.path.join(label_path , au_file) 
+            AULabel_path = os.path.join(l_path,au_file+'_au'+str(au) +'.txt')
+            if not os.path.isfile(AULabel_path):
+                continue
+            with open(AULabel_path, 'r') as label:
+                for lines in label.readlines():
+                    frameIdx, AUIntensity = lines.split(',')#获得帧的编号和AU强度，上面的t和frameIdx是一样的
+                    frameIdx, AUIntensity = int(frameIdx), int(AUIntensity)
+                    if AUIntensity >= 2:#AU强度大于1表示存在AU
+                        count[ai] += 1
+        au_all.append(count)
+    au_all = np.array(au_all)
+    au_class_freq = np.sum(au_all,axis=0)
+    #print(au_class_freq)
+    for i in range(len(au_all)):  #第i个subject的第j个AU
+        sub_freq = []
+        for j in range(len(au_all[i])):
+            freq = au_all[i][j] / au_class_freq[j]
+            sub_freq.append(freq)
+        au_res.append(sub_freq)
+    au_res = np.array(au_res)
+    return au_res
+
+
+
+    
+
+# if __name__ == '__main__':
+#     label_path = '/home/hfutzny/sda/casual_face/CIS/data/ActionUnit_Labels'
+#     compute_AU_inner_frequency(label_path)
 
 def split_data_random(args, infodir, kfold, splits_index):
 
